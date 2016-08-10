@@ -1,6 +1,6 @@
-@import url("_framework/styles/reset.css");
-@import url("_framework/styles/slideshow.css");
-@import url("_framework/styles/core.css");
+@import url("framework/styles/reset.css");
+@import url("framework/styles/slideshow.css");
+@import url("framework/styles/core.css");
 
 @import url("code/css/main.css");
 @import url("code/css/jquery-ui.css");
