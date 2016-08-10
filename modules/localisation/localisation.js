@@ -14,7 +14,7 @@
             if (window.location.href.indexOf('_ASK_Extensions') > -1) {
                 baseUrl = "../../" + baseUrl;
             }
-            if (window.location.href.indexOf('_framework') > -1) {
+            if (window.location.href.indexOf('framework') > -1) {
                 baseUrl + "../" + baseUrl;
             }
 

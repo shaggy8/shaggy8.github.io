@@ -1056,7 +1056,7 @@
       this.config = config != null ? config : {};
       this.markup = '';
       template = this.config.template || null;
-      path = this.config.path || '_framework/templates/';
+      path = this.config.path || 'framework/templates/';
       name = this.config.name || null;
       if (template) {
         return View.template[template](this.config);
@@ -1086,7 +1086,7 @@
     missing_slide: function(config) {
       var blueprint, output, template_data;
       blueprint = '';
-      app.getHtml('error_missing_slide', '_framework/templates/', function(data) {
+      app.getHtml('error_missing_slide', 'framework/templates/', function(data) {
         return blueprint = data;
       });
       output = app.template(blueprint, {
@@ -1101,7 +1101,7 @@
     missing_structure: function(config) {
       var blueprint, output, template_data;
       blueprint = '';
-      app.getHtml('error_missing_structure', '_framework/templates/', function(data) {
+      app.getHtml('error_missing_structure', 'framework/templates/', function(data) {
         return blueprint = data;
       });
       output = app.template(blueprint, {

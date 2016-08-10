@@ -11,7 +11,7 @@ function sendMailInclude(file)
 }
 
 /* include any js files here */
-sendMailInclude('./_framework/lib/json2.js');
+sendMailInclude('./framework/lib/json2.js');
 
 function sendMail(address, subject, body, fileName)
 {
