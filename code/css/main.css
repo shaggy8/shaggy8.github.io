@@ -467,6 +467,13 @@ textarea {
 /*-----slides-----*/
 /*-----slides-----*/
 /*-----slides-----*/
+.btn--menu {
+	bottom: 0;
+	left: 0;
+	width: 200px;
+	height: 88px;
+	z-index: 9000;
+}
 /*s1_1*/
 .popup__s1_1 {
 	box-sizing: border-box;
@@ -1389,14 +1396,15 @@ textarea {
 .touch_scroll {
 	margin: 20px 0 0 50px;
 	height: 560px;
-	overflow-y: scroll !important;
-	overflow-x: hidden !important;
+/*	overflow-y: scroll !important;
+	overflow-x: hidden !important;*/
 	width: 154px;
 	-webkit-overflow-scrolling: touch;
 }
 .preview-container {
-	overflow-y: scroll !important;
-	overflow-x: hidden !important;
+	list-style: none;
+/*	overflow-y: scroll !important;
+	overflow-x: hidden !important;*/
 	-webkit-overflow-scrolling: touch;
 }
 .preview-container li {
