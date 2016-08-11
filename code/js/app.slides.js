@@ -282,11 +282,12 @@ document.addEventListener('presentationInit', function() {
         $childrenAmount.html(function() {
           var children;
           var val = $roundSlider.roundSlider("option", "value");
-          var lastNumberOfVal = +val.toString().substr(-2);
+          var lastNumberOfVal = +val.toString().substr(-1);
+          var lastTwoNumbersOfVal = +val.toString().substr(-2);
 
-          if (lastNumberOfVal > 1 && lastNumberOfVal < 5) {
+          if ((lastTwoNumbersOfVal < 10 || lastTwoNumbersOfVal > 20) && lastNumberOfVal > 1 && lastNumberOfVal < 5) {
             children = ' ребенка';
-          } else if (lastNumberOfVal === 1) {
+          } else if (lastNumberOfVal === 1 && lastTwoNumbersOfVal !== 11) {
             children = ' ребенок';
           } else {
             children = ' детей';
