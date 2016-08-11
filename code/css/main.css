@@ -699,14 +699,16 @@ textarea {
 	top: 180px;
 	height: 88px;
 }
+.s1_5__placeholder--1,
 .s1_5__medications {
 	top: 303px;
 }
+.s1_5__placeholder--2,
 .s1_5__pharmaceutical-form {
 	top: 523px;
 }
-.s1_5__medications--placeholder,
-.s1_5__pharmaceutical-form--placeholder {
+.s1_5__placeholder--1,
+.s1_5__placeholder--2 {
 	opacity: 0.3;
 }
 .s1_5__btn {
@@ -1189,7 +1191,7 @@ textarea {
 	height: 85px;
 }
 /*s1_13*/
-.s1_13__info-block {
+.s1_13__info-block-static {
 	width: 455px;
 	height: 375px;
 	bottom: 90px;
@@ -1197,7 +1199,7 @@ textarea {
 	font-size: 21px;
 	font-weight: normal;
 }
-.s1_13__info-block ul {
+.s1_13__info-block-static ul {
 	padding-left: 40px;
 	list-style-type: disc;
 	margin-bottom: 16px;
@@ -1214,7 +1216,7 @@ textarea {
 	top: 677px;
 }
 /*s1_14*/
-.s1_14__info-block--1 {
+.s1_14__info-block-static {
 	width: 333px;
 	height: 412px;
 	bottom: 90px;
@@ -1222,16 +1224,16 @@ textarea {
 	font-size: 21px;
 	font-weight: normal;
 }
-.s1_14__info-block--1 .info-block__text-wrapper {
+.s1_14__info-block-static .info-block__text-wrapper {
 	padding-left: 23px;
 }
-.s1_14__info-block--1 ul {
+.s1_14__info-block-static ul {
 	list-style-type: disc;
 }
-.s1_14__info-block--1 li {
+.s1_14__info-block-static li {
 	margin: 16px 0;
 }
-.s1_14__info-block--2 {
+.s1_14__info-block {
 	bottom: 69px;
 	left: 54px;
 	width: 855px;
@@ -1256,7 +1258,7 @@ textarea {
 	right: 0;
 }
 /*s1_15*/
-.s1_15__info-block--1 {
+.s1_15__info-block-static {
 	width: 421px;
 	height: 349px;
 	bottom: 81px;
@@ -1264,13 +1266,13 @@ textarea {
 	font-size: 21px;
 	font-weight: normal;
 }
-.s1_15__info-block--2 {
+.s1_15__info-block--1 {
 	bottom: 50px;
 	left: 185px;
 	width: 595px;
 	height: 52px;
 }
-.s1_15__info-block--3 {
+.s1_15__info-block--2 {
 	bottom: 75px;
 	left: 48px;
 	width: 877px;

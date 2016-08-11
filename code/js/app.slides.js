@@ -7,7 +7,9 @@ document.addEventListener('presentationInit', function() {
       presentation.bgStyle('bepanthen', 'bg_s1_', 19);
       presentation.prev('empty');
     },
-    onExit: function(slideElement) {}
+    onExit: function(slideElement) {
+      presentation.closePopup();
+    }
   };
 });
 document.addEventListener('presentationInit', function() {
@@ -27,6 +29,7 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_10__info-block').hide();
       $('.s1_10__btn--info').unbind('click');
       $('.s1_10__info-block__close-button').unbind('click');
     }
@@ -48,6 +51,8 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      presentation.closePopup();
+      $('.s1_11__info-block').hide();
       $('.s1_11__btn--info').unbind('click');
       $('.s1_11__info-block__close-button').unbind('click');
     }
@@ -69,6 +74,8 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      presentation.closePopup();
+      $('.s1_12__info-block').hide();
       $('.s1_12__btn--info').unbind('click');
       $('.s1_12__info-block__close-button').unbind('click');
     }
@@ -82,9 +89,9 @@ document.addEventListener('presentationInit', function() {
     },
     onEnter: function(slideElement) {
       presentation.prev('bepanthen', 'bepanthen_9', "s1_13");
-      var $textBlock = $('.s1_13__info-block .info-block__text');
+      var $textBlock = $('.s1_13__info-block-static .info-block__text');
       var textBlockHeight = parseFloat($textBlock.css('height'));
-      var textBlockWrapperHeight = parseFloat($('.s1_13__info-block .info-block__text-wrapper').css('height'));
+      var textBlockWrapperHeight = parseFloat($('.s1_13__info-block-static .info-block__text-wrapper').css('height'));
       var textBlockTopScrolled = textBlockWrapperHeight - textBlockHeight;
 
       $('.s1_13__btn--1').click(function(e) {
@@ -100,6 +107,7 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_13__info-block-static .info-block__text').css('top', 0);
       $('.s1_13__btn--1').unbind('click');
       $('.s1_13__btn--2').unbind('click');
     }
@@ -113,9 +121,9 @@ document.addEventListener('presentationInit', function() {
     },
     onEnter: function(slideElement) {
       presentation.prev('bepanthen', 'bepanthen_10', "s1_14");
-      var $textBlock = $('.s1_14__info-block--1 .info-block__text');
+      var $textBlock = $('.s1_14__info-block-static .info-block__text');
       var textBlockHeight = parseFloat($textBlock.css('height'));
-      var textBlockWrapperHeight = parseFloat($('.s1_14__info-block--1 .info-block__text-wrapper').css('height'));
+      var textBlockWrapperHeight = parseFloat($('.s1_14__info-block-static .info-block__text-wrapper').css('height'));
       var textBlockTopScrolled = textBlockWrapperHeight - textBlockHeight;
       var amountOfScrolls = 2;
 
@@ -146,7 +154,7 @@ document.addEventListener('presentationInit', function() {
       });
 
       $('.s1_14__btn--info').click(function(e) {
-        $(e.target).siblings('.s1_14__info-block--2').show();
+        $(e.target).siblings('.s1_14__info-block').show();
       });
 
       $('.s1_14__info-block__close-button').click(function(e) {
@@ -154,6 +162,8 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_14__info-block-static .info-block__text').css('top', 0);
+      $('.s1_14__info-block').hide();
       $('.s1_14__btn--1').unbind('click');
       $('.s1_14__btn--2').unbind('click');
       $('.s1_14__btn--info').unbind('click');
@@ -170,11 +180,11 @@ document.addEventListener('presentationInit', function() {
       presentation.prev('bepanthen', 'bepanthen_10', "s1_15");
 
       $('.s1_15__btn--1').click(function(e) {
-        $(e.target).siblings('.s1_15__info-block--2').show();
+        $(e.target).siblings('.s1_15__info-block--1').show();
       });
 
       $('.s1_15__btn--info').click(function(e) {
-        $(e.target).siblings('.s1_15__info-block--3').show();
+        $(e.target).siblings('.s1_15__info-block--2').show();
       });
 
       $('.s1_15__info-block__close-button').click(function(e) {
@@ -182,6 +192,7 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_15__info-block').hide();
       $('.s1_15__btn--1').unbind('click');
       $('.s1_15__btn--info').unbind('click');
       $('.s1_15__info-block__close-button').unbind('click');
@@ -205,6 +216,7 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_16__info-block').hide();
       $('.s1_16__btn--info').unbind('click');
       $('.s1_16__info-block__close-button').unbind('click');
     }
@@ -226,11 +238,12 @@ document.addEventListener('presentationInit', function() {
     elements: {
       painContent: "#s1_18_2"
     },
+    interval: 0,
     onEnter: function(slideElement) {
       presentation.prev('bepanthen', 'bepanthen_11', "s1_18");
       var $growingBlock = $('.s1_18__growing_block');
       var growingStage = 0;
-      var growing = setInterval(function() {
+      var growing = this.interval = setInterval(function() {console.log('fuck');
         switch (growingStage) {
           case 0:
             $growingBlock.css('height', '76px');
@@ -248,6 +261,7 @@ document.addEventListener('presentationInit', function() {
       }, 4000);
     },
     onExit: function(slideElement) {
+      clearInterval(this.interval);
       $('.s1_18__growing_block').css('height', 0);
     }
   };
@@ -348,6 +362,9 @@ document.addEventListener('presentationInit', function() {
           if (index === 0) return;
           $(elem).html(index + partOfDial);
         });
+        $('#s1_2').on('swiperight', function () {
+          alert('fuck');
+        });
       });
 
       $buttonAnswer.click(function() {
@@ -404,7 +421,9 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
-      $('.s1_3__resizable-block').resizable("destroy");
+      $('.s1_3__resizable-block')
+        .resizable('destroy')
+        .removeAttr('style');
     }
   };
 });
@@ -481,6 +500,9 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      $('.s1_5__btn').removeClass('s1_5__btn--active');
+      $('.s1_5__medications').hide();
+      $('.s1_5__pharmaceutical-form').hide();
       $('.s1_5__wound').unbind('click');
       $('.s1_5__medications').unbind('click');
       $('.s1_5__pharmaceutical-form').unbind('click');
@@ -505,6 +527,7 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function() {
+      $('.s1_6__info-block').hide();
       $('.s1_6__btn--info').unbind('click');
       $('.s1_6__info-block__close-button').unbind('click');
     }
@@ -526,6 +549,8 @@ document.addEventListener('presentationInit', function() {
       });
     },
     onExit: function(slideElement) {
+      presentation.closePopup();
+      $('.s1_7__info-block').hide();
       $('.s1_7__btn--info').unbind('click');
       $('.s1_7__info-block__close-button').unbind('click');
     }
@@ -614,6 +639,8 @@ document.addEventListener('presentationInit', function() {
     },
     onExit: function(slideElement) {
       $('#s1_8_2').css('background-image', 'url("content/img/bepanthen/bepanthen_8.jpg"');
+      presentation.closePopup();
+      $('.s1_8__info-block').hide();
       $('.s1_8__btn--info-1').unbind('click');
       $('.s1_8__btn--info-2').unbind('click');
       $('.s1_8__info-block__close-button').unbind('click');
@@ -686,6 +713,7 @@ document.addEventListener('presentationInit', function() {
     },
     onExit: function(slideElement) {
       $('#s1_9_2').css('background-image', 'url("content/img/bepanthen/bepanthen_9.jpg"');
+      $('.s1_9__info-block').hide();
       var draggableCoordinates = [{
         top: 237,
         left: 222,
