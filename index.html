@@ -19,11 +19,12 @@
             }
 
             ul.tree {
-                position: relative;
+                position: relative !important;
             }
 
             ul.tree li {
-              position: static;
+                position: static;
+                left: 0 !important;
             }
 
             ul.tree li.placeholder {
@@ -831,7 +832,7 @@
         <script>
             jQuery(function() {
               $('ul.tree').sortable({
-                handle: '.label',
+                handle: '.handle, .path',
                 onDrag: function($item, position, _super, event) {
                   _super($item, position);
                   // console.log($item);
@@ -839,24 +840,24 @@
                   // console.log(event);
 
                   var $window = $(window);
-                  var $dragElement = $($item[0]);
 
                   var scrollTop = $window.scrollTop();
 
                   var bodyHeight = $('body').height();
-                  var dragElementHeight = $dragElement.height();
+                  var windowHeight = $window.height();
+                  var itemHeight = $item.height();
 
-                  var dragBottomInClient = event.clientY + dragElementHeight;
-                  var dragBottomInPage = event.pageY + dragElementHeight;
-                  var toThePageEnd = bodyHeight - dragBottomInPage;
+                  var itemBottomInClient = event.clientY + itemHeight;
+                  var itemBottomInPage = event.pageY + itemHeight;
+                  var toThePageEnd = bodyHeight - itemBottomInPage;
                   var scrollY = 20;
                   // console.log(scrollTop);
 
-                  if (dragBottomInClient > $window.height()) {
-                    if (bodyHeight <= scrollTop + $window.height()) {
+                  if (itemBottomInClient > windowHeight) {
+                    if (bodyHeight <= scrollTop + windowHeight) {
                       scrollY = 0;
                     } else if (toThePageEnd > 0 && toThePageEnd < scrollY) {
-                      scrollY = bodyHeight - dragBottomInPage;
+                      scrollY = bodyHeight - itemBottomInPage;
                     }
 
                     $window.scrollTop(scrollTop + scrollY);
@@ -867,9 +868,40 @@
                   }
                 },
                 isValidTarget: function ($item, container) {
+                  var $mainContainer = $('ul.tree');
+                  var containerSelector = this.containerSelector;
+                  var itemSelector = this.itemSelector;
+                  var $container = $(container.el[0]);
+                  var depth = 0;
+
+                  var currentItem = $item;
+
+                  do {
+                    currentItem = currentItem.has(containerSelector);
+
+                    if (currentItem.length > 0) {
+                      depth++;
+                      currentItem = currentItem
+                                      .children(containerSelector)
+                                      .children(itemSelector);
+                    }
+                  } while (currentItem.length > 0);
+
+                  var containersNumber = $container.parentsUntil($mainContainer, containerSelector).length;
+
+                  if (!$container.hasClass('tree')) {
+                    containersNumber++;
+                  }
+
+                  depth += containersNumber;
+                  console.log(depth);
                   // console.log($item);
                   // console.log(container);
-                  return true
+                  if (depth > +$mainContainer.attr('data-fx-max-depth')) {
+                    return false
+                  } else {
+                    return true
+                  }
                 }
               });
             });
