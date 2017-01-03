@@ -826,8 +826,6 @@
             </div>
 
         <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.ui.touch-punch.min.js"></script>
         <script src="js/jquery-sortable.js"></script>
         <script src="js/pixolino.js"></script>
         <script>
@@ -840,37 +838,37 @@
                   // console.log(position);
                   // console.log(event);
 
-                  var $body = $('body');
+                  var $window = $(window);
                   var $dragElement = $($item[0]);
 
-                  var scrollTop = $body.scrollTop();
+                  var scrollTop = $window.scrollTop();
 
-                  var bodyHeight = $body.height();
+                  var bodyHeight = $('body').height();
                   var dragElementHeight = $dragElement.height();
 
                   var dragBottomInClient = event.clientY + dragElementHeight;
                   var dragBottomInPage = event.pageY + dragElementHeight;
                   var toThePageEnd = bodyHeight - dragBottomInPage;
                   var scrollY = 20;
-                  // console.log($(window).height());
+                  // console.log(scrollTop);
 
-                  if (dragBottomInClient > $(window).height()) {
-                    if (bodyHeight <= scrollTop + $(window).height()) {
+                  if (dragBottomInClient > $window.height()) {
+                    if (bodyHeight <= scrollTop + $window.height()) {
                       scrollY = 0;
                     } else if (toThePageEnd > 0 && toThePageEnd < scrollY) {
                       scrollY = bodyHeight - dragBottomInPage;
                     }
 
-                    $body.scrollTop(scrollTop + scrollY);
+                    $window.scrollTop(scrollTop + scrollY);
                   }
 
                   if (event.clientY < 0) {
-                    $body.scrollTop( Math.max(scrollTop - scrollY, 0) );
+                    $window.scrollTop( Math.max(scrollTop - scrollY, 0) );
                   }
                 },
                 isValidTarget: function ($item, container) {
-                  console.log($item);
-                  console.log(container);
+                  // console.log($item);
+                  // console.log(container);
                   return true
                 }
               });
