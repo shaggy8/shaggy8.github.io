@@ -1,75 +1,879 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="de">
+            <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>pixolino — Web Publisher Pro</title>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-	<link rel="stylesheet" href="all.css">
-	<script src="code/js/jquery-2.1.4.min.js"></script>
-	<script src="code/js/jquery-ui.js"></script>
-	<script src="code/js/roundslider.min.js"></script>
-	<title></title>
-</head>
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lato:300,400,700'>
+        <link rel="stylesheet" href="css/pixolino.css">
+        <style>
+            body.dragging, body.dragging * {
+                cursor: move !important;
+            }
 
-<body>
-	<div id="presentation">
-		<nav id="mainMenu"></nav>
+            .dragged {
+                position: absolute !important;
+                opacity: 0.5;
+                z-index: 2000;
+            }
 
-		<section id="slideshows" class="slideshows"></section>
+            ul.tree {
+                position: relative;
+            }
 
-		<div id="thumbs" class="thumbs hiddenThrumbs">
-			<div id="handle" class="handle">
-				<div id="handle_middle" class="handle_middle" onclick="presentation.openPrev()">
-				</div>
-			</div>
-			<div id="touch_scroll" class="touch_scroll">
-				<ul id="preview_container" class="preview-container">
-				</ul>
-			</div>
-		</div>
+            ul.tree li {
+              position: static;
+            }
 
+            ul.tree li.placeholder {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+            ul.tree li.placeholder:before {
+                position: absolute;
+                content: "";
+                width: 0;
+                height: 0;
+                margin-top: -5px;
+                left: -5px;
+                top: -4px;
+                border: 5px solid transparent;
+                border-left-color: red;
+                border-right: none;
+            }
+        </style>
 
-	</div>
-
-
-	<!-- iPLANNER BUNDLED JAVASCRIPT -->
-	<script src="framework/lib/agnitio.js" type="text/javascript" charset="utf-8"></script>
-
-	<!-- iPLANNER BUNDLED JAVASCRIPT -->
-	<script src="viewer/js/monitor.js" type="text/javascript" charset="utf-8"></script>
-	<script src="viewer/js/pdf.js" type="text/javascript" charset="utf-8"></script>
-	<script src="viewer/js/sendmail.js" type="text/javascript" charset="utf-8"></script>
-
-	<!-- FRAMEWORK AND LIBRARIES -->
-	<script src="framework/lib/touchy.js" type="text/javascript" charset="utf-8"></script>
-	<script src="framework/lib/draggy.js" type="text/javascript" charset="utf-8"></script>
-	<script src="framework/lib/util.js" type="text/javascript" charset="utf-8"></script>
-	<script src="framework/core.js" type="text/javascript" charset="utf-8"></script>
-	<script src="code/js/expandnative.js" type="text/javascript" charset="utf-8"></script>
-	<script src="code/js/point.js" type="text/javascript" charset="utf-8"></script>
-
-	<!-- MODULES -->
-	<script src="modules/analytics/analytics.js" type="text/javascript"></script>
-	<script src="modules/resize/resize.js" type="text/javascript" charset="utf-8"></script>
-	<script src="modules/data/Data.js" type="text/javascript" charset="utf-8"></script>
-	<script src="modules/menu/menu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="modules/loader/loader.js" type="text/javascript" charset="utf-8"></script>
-	<script src="modules/slide-popup/slide-popup.js" type="text/javascript" charset="utf-8"></script>
-	<!--<script src="modules/thumb/thumb2.0.js" type="text/javascript" charset="utf-8"></script>-->
-	<script src="modules/localisation/localisation.js" type="text/javascript" charset="utf-8"></script>
-	<!-- CUSTOM MODULES -->
-	<script src="modules/slideinmenu/slideinmenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="modules/glossary/glossary.js" type="text/javascript" charset="utf-8"></script>
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
 
 
-	<script src="code/js/app.slides.js" type="text/javascript" charset="utf-8"></script>
 
 
-	<!-- APP SETUP -->
-	<script src="setup.js"></script>
-</body>
+                    <div class="page">
+                <header>
+                    <div class="mainnav-toggle mobile">
+                        <span class="icon expand"></span>
+                    </div>
+                </header>
 
+                <div class="main">
+
+                    <div class="content">
+
+    <h1>Seitenbaum für die Website »Icotest1«</h1>
+
+            <ul class="tree" id="fx_main_tree_icotest1" data-fx-max-depth="4">
+                                            <li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li><li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Home XXX
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/homexxx"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/homexxx/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li>
+                                <li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle notvisible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Test PO1
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/test-po"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/test-po"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/test-po/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                                    <ul id="page_test-po">
+                                                        <li class="lvl2 lastPage">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "></span>
+                            </div>
+                                                    <div class="cell path step2">
+                                <span class="path lastPath"><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Test 1
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/test-1"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/test-1"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/test-1/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li>
+
+                    </ul>
+                            </li>
+                                <li class="lvl1">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path "><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle notvisible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Bildtest
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/bildtest"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/bildtest"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/bildtest/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li>
+                                <li class="lvl1 lastPage">
+                <div class="leaf">
+                    <div class="ui">
+                                                    <div class="cell path step1">
+                                <span class="path lastPath"><span class="branch"></span></span>
+                            </div>
+                                                <div class="cell handle visible"></div>
+                        <div class="cell expander"><span class="icon"></span></div>
+
+                        <div class="cell label">
+                            Page title
+                        </div>
+
+                        <div class="cell btns 3btns">
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page-preview/page-title"><span class="icon next" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/page-title"><span class="icon settings" title="Bearbeiten"></span></a>
+                            <a class="button icon" href="/a/cms/pixolino/site/icotest1/page/page-title/delete"><span class="icon delete" title="Bearbeiten"></span></a>
+                        </div>
+                    </div>
+                </div>
+                            </li>
+
+        </ul>
+
+
+                    </div>
+                </div>
+
+                <nav class="category">
+                    <div class="mainnav-toggle mobile">
+                        <span class="icon expand"></span>
+                    </div>
+                    <ul>
+                                                    <li><span class="icon xl storage" title="Meine Konten"></span></li>
+
+                                                                                    <li><a href="/a/cms/templates/list/websites" title="Meine Templates"><span class="icon xl code"></span></a></li>
+
+                                                    <li><a href="/a/settings" title="Einstellungen"><span class="icon xl settings"></span></a></li>
+
+                        <li><a href="#" title="Texter"><span class="icon xl help"></span></a></li>
+
+                        <li><a href="/logout" title="Abmelden"><span class="icon xl logout"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.ui.touch-punch.min.js"></script>
+        <script src="js/jquery-sortable.js"></script>
+        <script src="js/pixolino.js"></script>
+        <script>
+            jQuery(function() {
+              $('ul.tree').sortable({
+                handle: '.label',
+                onDrag: function($item, position, _super, event) {
+                  _super($item, position);
+                  // console.log($item);
+                  // console.log(position);
+                  // console.log(event);
+
+                  var $body = $('body');
+                  var $dragElement = $($item[0]);
+
+                  var scrollTop = $body.scrollTop();
+
+                  var bodyHeight = $body.height();
+                  var dragElementHeight = $dragElement.height();
+
+                  var dragBottomInClient = event.clientY + dragElementHeight;
+                  var dragBottomInPage = event.pageY + dragElementHeight;
+                  var toThePageEnd = bodyHeight - dragBottomInPage;
+                  var scrollY = 20;
+                  // console.log($(window).height());
+
+                  if (dragBottomInClient > $(window).height()) {
+                    if (bodyHeight <= scrollTop + $(window).height()) {
+                      scrollY = 0;
+                    } else if (toThePageEnd > 0 && toThePageEnd < scrollY) {
+                      scrollY = bodyHeight - dragBottomInPage;
+                    }
+
+                    $body.scrollTop(scrollTop + scrollY);
+                  }
+
+                  if (event.clientY < 0) {
+                    $body.scrollTop( Math.max(scrollTop - scrollY, 0) );
+                  }
+                },
+                isValidTarget: function ($item, container) {
+                  console.log($item);
+                  console.log(container);
+                  return true
+                }
+              });
+            });
+        </script>
+            </body>
 </html>
