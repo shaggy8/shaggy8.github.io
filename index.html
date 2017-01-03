@@ -828,9 +828,13 @@
         <script>
             jQuery(function() {
               $('ul.tree').sortable({
+                
+                mainContainer: $('ul.tree'),
+
                 handle: '.handle, .path',
+
                 onDrag: function($item, position, _super, event) {
-                  _super($item, position);
+                  // _super($item, position);
                   // console.log($item);
                   // console.log(position);
                   // console.log(event);
@@ -863,8 +867,9 @@
                     $window.scrollTop( Math.max(scrollTop - scrollY, 0) );
                   }
                 },
+
                 isValidTarget: function ($item, container) {
-                  var $mainContainer = $('ul.tree');
+                  var $mainContainer = this.mainContainer;
                   var containerSelector = this.containerSelector;
                   var itemSelector = this.itemSelector;
                   var $container = $(container.el[0]);
@@ -885,7 +890,7 @@
 
                   var containersNumber = $container.parentsUntil($mainContainer, containerSelector).length;
 
-                  if (!$container.hasClass('tree')) {
+                  if (!$container.is($mainContainer)) {
                     containersNumber++;
                   }
 
@@ -898,6 +903,12 @@
                   } else {
                     return true
                   }
+                },
+
+                onDrop: function ($item, container, _super, event) {
+                  _super($item, container);
+
+
                 }
               });
             });

@@ -152,7 +152,7 @@
   },
   eventNames = {
     start: "touchstart.sortable mousedown.sortable",
-    drop: "touchend.sortable mouseup.sortable",
+    drop: "touchend.sortable touchcancel.sortable mouseup.sortable",
     drag: "touchmove.sortable mousemove.sortable",
     scroll: "scroll.sortable"
   },
