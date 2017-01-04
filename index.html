@@ -827,6 +827,43 @@
         <script src="js/pixolino.js"></script>
         <script>
             jQuery(function() {
+                    //touch click helper
+    (function ($) {
+        $.fn.tclick = function (onclick) {
+            this.bind("touchstart", function (e) { onclick.call(this, e); e.stopPropagation(); e.preventDefault(); });
+            this.bind("mousedown", function (e) { onclick.call(this, e); });
+            return this;
+        };
+    })(jQuery);
+
+    // auto-scrolling for drag and drop sortable
+    var isScrolling = false;
+    $(document).bind('touchmove mousemove', function (e) {
+        if ($('body').hasClass('fx_tb_dragging') && e.clientY < 80)
+        {
+            if (!isScrolling)
+            {
+                isScrolling = true;
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            }
+        }
+        else if ($('body').hasClass('fx_tb_dragging') && $( window ).height() - e.clientY < 80)
+        {
+            if (!isScrolling)
+            {
+                isScrolling = true;
+                $('html, body').animate({scrollTop: $(document).height() - $(window).height()}, 'slow');
+            }
+        }
+        else
+        {
+            if (isScrolling)
+            {
+                $('html, body').stop();
+                isScrolling = false;
+            }
+        }
+    });
               $('ul.tree').sortable({
                 
                 mainContainer: $('ul.tree'),
